@@ -6,7 +6,26 @@ This repository provides an approach to fine-tuning OpenAI's powerful GPT2 langu
 
 ## Requirements
 
-Before you can launch training, you need to install the following requirements
+### Install PyTorch
+```bash
+#conda
+conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cudatoolkit=11.3 -c pytorch
+#pip
+pip install torch==1.12.0+cu113 torchvision==0.13.0+cu113 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu113
+```
+
+### [Install Colossal-AI](https://github.com/hpcaitech/ColossalAI#installation)
+```bash
+git clone https://github.com/hpcaitech/ColossalAI.git
+cd ColossalAI
+pip install -r ColossalAI/requirements/requirements.txt
+pip install ColossalAI/
+```
+
+### Install requirements
+```bash
+pip install -r requirements.txt
+```
 
 ## Dataset Used
 The dataset used in this repository example is from [GLUE](https://huggingface.co/datasets/nyu-mll/glue), the General Language Understanding Evaluation benchmark. The task used is *mrpc*: the Microsoft Research Paraphrase Corpus. This corpus of sentence pairs, extracted from online news sources, with human annotations to flag whether the sentences pairs are semantically equivalent. 
@@ -23,12 +42,43 @@ Modify **train()** function with loss and accuracy as return values. Used for vi
 
 Modify and simplify **evaluate()** function to avoid out-of-memory issue. Keep loss and accuracy as return values for model evaluation metrics.
 
+## How to Use
+1. Clone the Repository:
+```bash
+git clone https://github.com/ZhuSisi777/gpt2_fine_tune_with_colossalai.git
+cd gpt2_fine_tune_with_colossalai
+```
+2. Install Dependencies:
+```bash
+pip install -r requirements.txt
+```
+3. Prepare Data:
+If you intend to fine-tune on a dataset from the GLUE benchmark, utilize the **data.py** helper package to load the data. Modify the script as necessary to suit your dataset requirements.
+
+4. Exploring Intermediate Results:
+The **finetune_gpt_modified.ipynb** notebook provides a convenient way to visualize and analyze intermediate results. Execute the notebook line by line to understand the execution flow and monitor progress.
+
+5. Combile Python File:
+**run_finetune_gpt2.py** is a combiled python file from **finetune_gpt_modified.ipynb**
+
+6. Execute Fine-Tuning:
+Utilize the **run.sh** shell script to execute the compiled python file and initiated the fine-tuning process:
+```bash
+bash run.sh
+```
+7. Monitor Progress:
+During fine-tuning, monitor progress, and performance metrics to assess the effectiveness of the model adaptation. Adjust hyperparameters or dataset configurations as needed for optimal results.
+
+8. Experiment and Iterate:
+Fine-tuning is an iterative process. Experiment with different configurations, datasets, and hyperparameters to achieve desired performance levels for your specific task or application.
+
+  
 ## Result
-Batch Size: 32, Epoch: max 4 then no decrease in loss, loss: 0.52, Acc: 74.15%, learning rate:2.4e-5, weight decay: 0.01, warmup_fraction=0.1
+Batch Size: 32, Epoch: 9, loss: 0.52, Acc: 74.15%, learning rate:2.4e-5, weight decay: 0.01, warmup_fraction=0.1
 
-Batch Size: 32, Epoch: max 4 then no decrease in loss, loss: 0.536, Acc: 72.7%, learning rate:1.2e-5, weight decay: 0.01, warmup_fraction=0.05
+Batch Size: 32, Epoch: 9, loss: 0.536, Acc: 72.7%, learning rate:1.2e-5, weight decay: 0.01, warmup_fraction=0.05
 
-Batch Size: 16, Epoch: max 4 then no decrease in loss, loss: 0.54, Acc: 73.2%, learning rate:2.4e-5, weight decay: 0.01, warmup_fraction=0.1
+Batch Size: 16, Epoch: 9, loss: 0.54, Acc: 73.2%, learning rate:2.4e-5, weight decay: 0.01, warmup_fraction=0.1
 
 
 **Final parameter:**
