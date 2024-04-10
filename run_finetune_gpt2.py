@@ -198,7 +198,7 @@ def main():
         loss = criterion(outputs)
         return loss
     
-    # =========222=====================
+    # ==============================
     # Boost with ColossalAI
     # ==============================
     model, optimizer, _criterion, _, lr_scheduler = booster.boost(
