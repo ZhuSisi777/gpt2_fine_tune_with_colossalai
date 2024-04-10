@@ -2,7 +2,7 @@
 This example is reproducing the code from [Clossal-AI](https://github.com/hpcaitech/ColossalAI/blob/main/examples/language/gpt/hybridparallelism/finetune.py) on GPT2 fine tunning in distributed manners. 
 
 ## Introduction
-
+This repository provides an approach to fine-tuning OpenAI's powerful GPT2 language model using Colossal AI, an efficient and user friendly platform for large-scale AI experimentation. Fine-tuning GPT2 allows you to test out practical experience of distributed training with Colosal-AI, unlocking its full potential in various natual language processing task. 
 
 ## Requirements
 
