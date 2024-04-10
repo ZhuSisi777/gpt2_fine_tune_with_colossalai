@@ -1,0 +1,7 @@
+transformers >= 4.23
+torch>=1.12
+colossalai
+datasets
+tqdm
+numpy
+torchvision
